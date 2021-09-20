@@ -14,6 +14,6 @@ class Api::MemosController < ApplicationController
 
   private
     def memo_params
-      params.permit(:title, :description)
+      params.permit(:title, :discription)
     end
 end
