@@ -33,24 +33,32 @@ export default {
       discription: '',
     }
   },
+  // 最初のタイミングで実行される関数
    mounted () {
     this.setMemo();
   },
   methods: {
     setMemo: function() {
+      // axios.HTTP動詞('url')
       axios.get('/api/memos')
+      // .then()で通信が成功した際の処理を書く。
       .then(response => (
+    　// Axiosで呼び出したAPIの情報をmemosに代入
         this.memos = response.data
       ))
     },
     addMemo: function() {
+      // axios.HTTP動詞('url')
       axios.post('/api/memos', {
+        // 第二引数に送りたいデータを記載
         title: this.title,
         discription: this.discription
       })
+       // .then()で通信が成功した際の処理を書く。
       .then(response => (
         this.setMemo()
       ));
+      // フォームを空にする
       this.title = ""
       this.discription = ""
     }

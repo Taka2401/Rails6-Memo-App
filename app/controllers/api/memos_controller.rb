@@ -6,8 +6,10 @@ class Api::MemosController < ApplicationController
   def create
     @memo = Memo.new(memo_params)
     if @memo.save
+      # 投稿出来たらcreatedのステータスを付与
       render :show, status: :created
     else
+      # 投稿出来なかった場合エラーを出す。
       render json: @memo.errors, status: :unprocessable_entity
     end
   end
